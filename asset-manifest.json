@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/myAnswerSkinCare/static/css/main.d4bbee5e.css",
-    "main.js": "/myAnswerSkinCare/static/js/main.af47ccb4.js",
+    "main.js": "/myAnswerSkinCare/static/js/main.f5243dc9.js",
     "static/js/453.dfad05b8.chunk.js": "/myAnswerSkinCare/static/js/453.dfad05b8.chunk.js",
     "static/media/bootstrap-icons.woff?": "/myAnswerSkinCare/static/media/bootstrap-icons.ee7f7b0d4f2ab19faa89.woff",
     "static/media/bootstrap-icons.woff2?": "/myAnswerSkinCare/static/media/bootstrap-icons.ca3f59d022374667bd54.woff2",
     "index.html": "/myAnswerSkinCare/index.html",
     "main.d4bbee5e.css.map": "/myAnswerSkinCare/static/css/main.d4bbee5e.css.map",
-    "main.af47ccb4.js.map": "/myAnswerSkinCare/static/js/main.af47ccb4.js.map",
+    "main.f5243dc9.js.map": "/myAnswerSkinCare/static/js/main.f5243dc9.js.map",
     "453.dfad05b8.chunk.js.map": "/myAnswerSkinCare/static/js/453.dfad05b8.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d4bbee5e.css",
-    "static/js/main.af47ccb4.js"
+    "static/js/main.f5243dc9.js"
   ]
 }
