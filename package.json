@@ -2,7 +2,7 @@
   "name": "myanswer-skincare",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://aijoyzuo.github.io/myanswer",
+  "homepage": "https://aijoyzuo.github.io/myAnswerSkinCare",
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
