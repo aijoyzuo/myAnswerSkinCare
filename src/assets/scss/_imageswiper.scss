@@ -1,0 +1,67 @@
+/* scss/imageswiper.scss */
+
+$primary: #a4d6e3;
+
+:root {
+    --swiper-theme-color: #{$primary} !important; // SCSS 語法
+}
+
+/* 1) 先把 Swiper 預設箭頭徹底關掉（預設用 ::after + mask） */
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  content: '' !important;
+  background: none !important;
+  mask: none !important;
+  -webkit-mask: none !important;
+  border: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* 2) 用 ::before 來畫「實心三角形」 */
+.swiper-button-prev,
+.swiper-button-next {
+  width: 44px;
+  height: 44px;
+  display: flex;              /* 讓 ::before 容易置中 */
+  align-items: center;
+  justify-content: center;
+  z-index: 5;                 /* 保險：在最上層 */
+  pointer-events: auto;
+}
+
+.swiper-button-prev::before,
+.swiper-button-next::before {
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+}
+
+/* 左箭頭（▶ 指向左邊） */
+.swiper-button-prev::before {
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-right: 16px solid $primary;
+}
+
+/* 右箭頭（▶ 指向右邊） */
+.swiper-button-next::before {
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-left: 16px solid $primary;
+}
+
+/* 互動與狀態（可選） */
+.swiper-button-prev:hover::before,
+.swiper-button-next:hover::before {
+  filter: brightness(0.85);
+}
+
+.swiper-button-disabled { opacity: .35; pointer-events: none; }
+
+/* 手機隱藏箭頭（可選） */
+@media (max-width: 767.98px) {
+  .swiper-button-prev,
+  .swiper-button-next { display: none; }
+}
