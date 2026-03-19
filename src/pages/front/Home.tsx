@@ -20,19 +20,19 @@ type AuthorItem = {
 const authorItem: AuthorItem[] = [
   {
     img: "https://images.plurk.com/1shnZ9bIDDdZRmX9NF7FlC.png ",
-    text: "我們專注於皮膚健康醫美、品牌管理工具、心靈成長冥想與閱讀寫作樂活，打造身心靈整合的美好生活提案。",
+    text: "專注於皮膚健康醫美、品牌管理工具、心靈成長冥想與閱讀寫作樂活，打造身心靈整合的美好生活提案。",
     author: "林玲安 皮膚專科醫師",
     alt: "林玲安肖像",
   },
   {
     img: "https://images.plurk.com/27uRo9dvtz1eeept5BKDco.png",
-    text: "我們結合臨床醫美技術、心智覺察訓練與敘事書寫，陪伴顧客共同探索外在美感與內在自信的整合式生活提案。",
+    text: "結合臨床醫美技術、心智覺察訓練與敘事書寫，陪伴顧客共同探索外在美感與內在自信的整合式生活提案。",
     author: "黃憲傑 整形外科醫師",
     alt: "黃憲傑肖像",
   },
   {
     img: "https://images.plurk.com/1IomxDHPrNnKBhljgLwOiP.png",
-    text: "我們融合女性健康教育、品牌定位思維、身心平衡冥想以及療癒性書寫，打造支持女性全生命週期的整體性健康管理與生活美學系統。",
+    text: "融合女性健康教育、身心平衡以及療癒性書寫，打造支持女性全生命週期的整體性健康管理與生活美學。",
     author: "蔡芸薇 婦產科醫師",
     alt: "蔡芸薇肖像",
   },
@@ -147,8 +147,8 @@ function NewsletterInline(): JSX.Element {
     email,
     hp,
   }) => {
-    if (hp) return; // 蜜罐
-    void email; // 你之後接 API 用得到，先避免 TS unused 變動（如果你有 eslint 規則）
+    if (hp) return; 
+    void email; 
     await new Promise<void>((r) => setTimeout(r, 400));
   };
 
@@ -349,7 +349,7 @@ export default function Home(): JSX.Element {
             className="carousel slide"
             data-bs-ride="carousel"
             data-bs-interval="1500"
-            data-bs-wrap="true"
+            data-bs-wrap="true"        
           >
             <div className="carousel-inner">
               {authorItem.map((item, index) => (
