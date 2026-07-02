@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios, { AxiosRequestConfig, Method } from 'axios';
-import { useMessage, handleSuccessMessage, handleErrorMessage } from '../context/messageContext';
+import { useAppDispatch } from '../store/hooks';
+import { handleSuccessMessage, handleErrorMessage } from '../store/messageSlice';
 
 const defaultProduct: Product = {
   title: "",
@@ -49,8 +50,7 @@ export default function ProductModal({
   // 用完整 Product 型別管理表單狀態
   const [tempData, setTempData] = useState<Product>(defaultProduct);
 
-  // ✅ 用物件格式拿到 dispatch（如果有需要也可取 state）
-  const { dispatch } = useMessage();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
   if (type === "create") {

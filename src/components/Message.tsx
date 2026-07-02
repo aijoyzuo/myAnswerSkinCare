@@ -1,7 +1,9 @@
-import { useMessage } from "../context/messageContext";
+import { useAppDispatch, useAppSelector } from '../store/hooks';
+import { clearMessage } from '../store/messageSlice';
 
 export default function Message(): JSX.Element {
-  const { state: message, dispatch } = useMessage();
+  const message = useAppSelector((s) => s.message);
+  const dispatch = useAppDispatch();
 
   return (
     <div
@@ -21,7 +23,7 @@ export default function Message(): JSX.Element {
               type='button'
               className='btn-close'
               aria-label='Close'
-              onClick={() => dispatch({ type: 'CLEAR_MESSAGE' })}
+              onClick={() => dispatch(clearMessage())}
             />
           </div>
           <div className='toast-body'>{message.text}</div>

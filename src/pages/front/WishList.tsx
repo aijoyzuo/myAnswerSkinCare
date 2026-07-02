@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import axios, { AxiosError } from "axios";
 import { useOutletContext, Link } from "react-router-dom";
-import { useWishList } from "../../context/wishListContext";
+import useWishList from "../../hook/useWishList";
 import Loading from "../../components/Loading";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import { useToast } from "../../context/toastContext";
@@ -33,7 +33,7 @@ type ProductsAllResponse = {
 };
 
 export default function WishList(): JSX.Element {
-  const { wishList, toggleWish } = useWishList(); 
+  const { wishList, toggleWish } = useWishList();
 
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);

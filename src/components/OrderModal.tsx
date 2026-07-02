@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios, { AxiosRequestConfig } from 'axios';
-import { useMessage, handleSuccessMessage, handleErrorMessage } from '../context/messageContext';
+import { useAppDispatch } from '../store/hooks';
+import { handleSuccessMessage, handleErrorMessage } from '../store/messageSlice';
 
 /** --- 最小必要型別，依你的使用場景建立 --- */
 type OrderLine = {
@@ -42,8 +43,7 @@ export default function OrderModal({
     status: (tempOrder.status ?? 0) as 0 | 1 | 2 | 3,
   });
 
-  // ✅ 用物件格式取得 dispatch（也可以取出 state，看需要）
-  const { dispatch } = useMessage();
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     setTempData({

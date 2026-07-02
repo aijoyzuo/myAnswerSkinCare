@@ -2,7 +2,6 @@ import { Outlet } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import axios, { AxiosError } from "axios";
 import { useCallback, useEffect, useState } from "react";
-import { WishListProvider } from "../../context/wishListContext";
 import { useToast } from "../../context/toastContext";
 
 type ApiErrorData = { message?: string; success?: boolean };
@@ -79,23 +78,21 @@ export default function FrontLayout(): JSX.Element {
 
   return (
     <div className="d-flex flex-column min-vh-100">
-      <WishListProvider>
-        <Navbar cartData={cartData} />
-        <main className="flex-grow-1">
-          <Outlet context={{ getCart, cartData }} />
-        </main>
+      <Navbar cartData={cartData} />
+      <main className="flex-grow-1">
+        <Outlet context={{ getCart, cartData }} />
+      </main>
 
-        <footer className="bg-dark">
-          <div className="container">
-            <div
-              className="d-flex align-items-center justify-content-center text-white"
-              style={{ height: "48px" }}
-            >
-              <p className="mb-0">© 2025 ANSWER All Rights Reserved.</p>
-            </div>
+      <footer className="bg-dark">
+        <div className="container">
+          <div
+            className="d-flex align-items-center justify-content-center text-white"
+            style={{ height: "48px" }}
+          >
+            <p className="mb-0">© 2025 ANSWER All Rights Reserved.</p>
           </div>
-        </footer>
-      </WishListProvider>
+        </div>
+      </footer>
     </div>
   );
 }

@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import Pagination, { type PaginationData } from "../../components/Pagination";
 import Loading from "../../components/Loading";
-import { useWishList } from "../../context/wishListContext";
+import useWishList from "../../hook/useWishList";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import { useToast } from "../../context/toastContext";
 

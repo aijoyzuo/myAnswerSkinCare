@@ -2,7 +2,6 @@ import { Outlet, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Message from "../../components/Message";
-import { MessageProvider } from "../../context/messageContext";
 
 const getToken = (): string => {
   const raw = document.cookie
@@ -46,9 +45,8 @@ export default function Dashboard(): JSX.Element {
   }, [navigate]);
 
   return (
-    <MessageProvider>
+    <>
       <Message />
-      {/* 下面 UI 你原本的照放 */}
       <nav className="navbar navbar-expand-lg bg-dark">
         {/* ...略 */}
         <button type="button" className="btn btn-sm btn-light" onClick={handleLogout}>
@@ -73,6 +71,6 @@ export default function Dashboard(): JSX.Element {
 
         <div className="w-100">{authChecked && <Outlet />}</div>
       </div>
-    </MessageProvider>
+    </>
   );
 }

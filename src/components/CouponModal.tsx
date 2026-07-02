@@ -1,6 +1,7 @@
 import axios, { AxiosRequestConfig, Method } from 'axios';
 import { useEffect, useState } from "react";
-import { useMessage, handleSuccessMessage, handleErrorMessage } from "../context/messageContext";
+import { useAppDispatch } from '../store/hooks';
+import { handleSuccessMessage, handleErrorMessage } from '../store/messageSlice';
 
 /** 後端的優惠券結構（用到的欄位） */
 export interface Coupon {
@@ -36,7 +37,7 @@ export default function CouponModal({ closeModal, getCoupons, type, tempCoupon }
     due_date: 1555459200,
     code: 'testCode',
   });
-  const { dispatch } = useMessage();
+  const dispatch = useAppDispatch();
 
   //把input輸入的時間格式(2025-04-25)經過轉成new Date再轉成api的時間格式(unix timestamp)
   const [date, setDate] = useState(new Date());
