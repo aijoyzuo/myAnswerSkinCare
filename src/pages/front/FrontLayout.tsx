@@ -1,8 +1,9 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import axios, { AxiosError } from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { useToast } from "../../context/toastContext";
+import { AnimatePresence, motion } from "motion/react";
 
 type ApiErrorData = { message?: string; success?: boolean };
 
@@ -50,6 +51,7 @@ export default function FrontLayout(): JSX.Element {
   });
 
   const toast = useToast();
+  const location = useLocation();
 
   const getCart = useCallback(async (): Promise<void> => {
     try {
@@ -79,9 +81,18 @@ export default function FrontLayout(): JSX.Element {
   return (
     <div className="d-flex flex-column min-vh-100">
       <Navbar cartData={cartData} />
-      <main className="flex-grow-1">
-        <Outlet context={{ getCart, cartData }} />
-      </main>
+      <AnimatePresence mode="wait">
+        <motion.main
+          key={location.pathname}
+          className="flex-grow-1"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          <Outlet context={{ getCart, cartData }} />
+        </motion.main>
+      </AnimatePresence>
 
       <footer className="bg-dark">
         <div className="container">

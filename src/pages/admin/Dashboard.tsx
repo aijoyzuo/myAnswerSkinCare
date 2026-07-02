@@ -47,11 +47,13 @@ export default function Dashboard(): JSX.Element {
   return (
     <>
       <Message />
-      <nav className="navbar navbar-expand-lg bg-dark">
-        {/* ...略 */}
-        <button type="button" className="btn btn-sm btn-light" onClick={handleLogout}>
-          登出
-        </button>
+      <nav className="navbar navbar-expand-lg bg-dark px-4">
+        <span className="navbar-brand text-white fw-bold">ANSWER 後台管理</span>
+        <div className="ms-auto">
+          <button type="button" className="btn btn-sm btn-light" onClick={handleLogout}>
+            登出
+          </button>
+        </div>
       </nav>
 
       <div className="d-flex" style={{ minHeight: "calc(100vh - 56px)" }}>

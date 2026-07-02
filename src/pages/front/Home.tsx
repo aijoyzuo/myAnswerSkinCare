@@ -89,7 +89,7 @@ type ProductsResponse = {
 
 function CategoryGrid({ categories }: { categories: CategoryInfo[] }): JSX.Element {
   return (
-    <section className="container my-7">
+    <section className="mb-5">
       <h2 className="fw-bold mb-3">探索分類</h2>
       <div className="row g-3">
         {categories.map((c) => (
@@ -399,23 +399,23 @@ export default function Home(): JSX.Element {
               <h3>ANSWER肌膚管理中心</h3>
               <p className="text-muted">貴賓諮詢專線：02-78099330</p>
               <p className="text-muted">
-                地址：台北市小安區民和路一段113號2樓之一
+                地址：台北市安心區民和路一段113號2樓之一
                 <br />
-                （近捷運小安站1號出口）
+                （近捷運安心站8號出口）
               </p>
               <ul className="list-unstyled d-flex justify-content-center h4">
                 <li className="me-3">
-                  <a href="https://www.facebook.com/MMedicalGroup/?ref=embed_page#">
+                  <a href="#">
                     <i className="bi bi-facebook" />
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.instagram.com/answer_skincare/">
+                  <a href="#">
                     <i className="bi bi-instagram" />
                   </a>
                 </li>
                 <li className="ms-3">
-                  <a href="https://line.me/R/ti/p/%40vwp1840p">
+                  <a href="#">
                     <i className="bi bi-line" />
                   </a>
                 </li>

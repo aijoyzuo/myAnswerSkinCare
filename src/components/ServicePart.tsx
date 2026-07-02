@@ -1,31 +1,30 @@
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 type ServicePartProps = {
   img: string;
-  alt:string;
-  name:string;
+  alt: string;
+  name: string;
   description: string;
-  suitableFor:string; 
-  onReserveClick:() => void;
+  suitableFor: string;
+  onReserveClick: () => void;
 }
-
 
 export default function ServicePart({ img, alt, name, description, suitableFor, onReserveClick }: ServicePartProps): JSX.Element {
   return (
     <div className="col-md-3 mb-4 py-1">
       <motion.div
         style={{ height: "100%" }}
-        initial={{ y: 50, opacity: 0 }}         // 初始狀態：略下方 + 透明
-        whileInView={{ y: 0, opacity: 1 }}      // 滑入時：上移到原位 + 顯示
-        transition={{ duration: 0.8, ease: "easeOut" }} // 動畫時間與節奏
+        initial={{ y: 50, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
         viewport={{ once: true }}>
         <div
           className="card h-100 border-0 bg-light hover-shadow cursor-pointer"
           onClick={onReserveClick}
-          role="button"           // 🔍 無障礙：讓螢幕閱讀器知道它是可互動的
-          tabIndex={0}            // 🔍 支援鍵盤聚焦
+          role="button"
+          tabIndex={0}
           onKeyDown={(e) => {
-            if (e.key === "Enter") onReserveClick(); // 🔍 按下 Enter 可觸發
+            if (e.key === "Enter") onReserveClick();
           }}
         >
           <div className="card-body h-100 d-flex flex-column justify-content-between">

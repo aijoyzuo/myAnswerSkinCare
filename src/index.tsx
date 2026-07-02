@@ -14,10 +14,13 @@ axios.defaults.baseURL = process.env.REACT_APP_API_URL;
 
 async function enableMocking() {
   const { worker } = await import('./mocks/browser');
+  // 開發環境 PUBLIC_URL 會因 homepage 欄位被設為 /myAnswerSkinCare，
+  // 導致 SW scope 不符合 localhost:3000/，需固定用根路徑
+  const swUrl = process.env.NODE_ENV === 'development'
+    ? '/mockServiceWorker.js'
+    : `${process.env.PUBLIC_URL}/mockServiceWorker.js`;
   return worker.start({
-    serviceWorker: {
-      url: `${process.env.PUBLIC_URL}/mockServiceWorker.js`,
-    },
+    serviceWorker: { url: swUrl },
     onUnhandledRequest: 'bypass',
   });
 }

@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { motion } from "motion/react";
 import axios, { AxiosError } from "axios";
 import {
   Link,
@@ -44,6 +45,7 @@ type GetProductsArgs = {
   page?: number;
   keyword?: string;
 };
+
 
 export default function Products(): JSX.Element {
   const [searchKeyword, setSearchKeyword] = useState<string>("");
@@ -276,8 +278,14 @@ export default function Products(): JSX.Element {
           </div>
         )}
 
-        {products.map((product) => (
-          <div className="col-md-4 mb-3 d-flex" key={product.id}>
+        {products.map((product, index) => (
+          <motion.div
+            className="col-md-4 mb-3 d-flex"
+            key={product.id}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35, ease: "easeOut", delay: index * 0.07 }}
+          >
             <div className="card border-0 position-relative d-flex flex-column h-100 w-100 hover-shadow">
               <Link to={`/product/${product.id}`} className="nodecoration">
                 <img
@@ -357,7 +365,7 @@ export default function Products(): JSX.Element {
                 </button>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
 
