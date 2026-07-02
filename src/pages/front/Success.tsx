@@ -1,5 +1,5 @@
 import axios, { AxiosError } from "axios";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { useParams, useLocation, Link } from "react-router-dom";
 import StepIndicator from "../../components/StepIndicator";
 
@@ -51,7 +51,7 @@ export default function Success(): JSX.Element {
     return axErr.response?.data?.message || axErr.message || fallback;
   };
 
-  const getOrder = async (id: string): Promise<void> => {
+  const getOrder = useCallback(async (id: string): Promise<void> => {
     try {
       const res = await axios.get<OrderResponse>(
         `/v2/api/${process.env.REACT_APP_API_PATH}/order/${id}`
@@ -64,15 +64,14 @@ export default function Success(): JSX.Element {
         ...raw,
       });
     } catch (err: unknown) {
-      // 你如果有 toast 也可以改成 toast.error(...)
       console.error(getErrMsg(err, "取得訂單失敗"));
     }
-  };
+  }, []);
 
   useEffect(() => {
     if (!orderId) return;
     void getOrder(orderId);
-  }, [orderId]);
+  }, [orderId, getOrder]);
 
   const productArray = useMemo(
     () => Object.values(orderData.products ?? {}),

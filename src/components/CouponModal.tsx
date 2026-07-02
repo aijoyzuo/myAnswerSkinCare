@@ -73,7 +73,6 @@ export default function CouponModal({ closeModal, getCoupons, type, tempCoupon }
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
     const { name, value, checked } = e.target;
 
-    type TextField = 'title' | 'code';
     type NumberField = 'percent';
 
     if (name === 'is_enabled') {
