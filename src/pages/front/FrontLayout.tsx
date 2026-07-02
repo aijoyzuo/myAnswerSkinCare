@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../../components/Navbar";
 import axios, { AxiosError } from "axios";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { WishListProvider } from "../../context/wishListContext";
-import Swal from "sweetalert2";
+import { useToast } from "../../context/toastContext";
 
 type ApiErrorData = { message?: string; success?: boolean };
 
@@ -38,6 +38,11 @@ type CartApiResponse = {
   message?: string;
 };
 
+const getErrMsg = (err: unknown, fallback = "請稍後再試"): string => {
+  const axErr = err as AxiosError<ApiErrorData>;
+  return axErr.response?.data?.message || axErr.message || fallback;
+};
+
 export default function FrontLayout(): JSX.Element {
   const [cartData, setCartData] = useState<CartData>({
     carts: [],
@@ -45,24 +50,9 @@ export default function FrontLayout(): JSX.Element {
     final_total: 0,
   });
 
-  const Toast = useMemo(
-    () =>
-      Swal.mixin({
-        toast: true,
-        position: "top-end",
-        showConfirmButton: false,
-        timer: 2000,
-        timerProgressBar: true,
-      }),
-    []
-  );
+  const toast = useToast();
 
-  const getErrMsg = (err: unknown, fallback = "請稍後再試"): string => {
-    const axErr = err as AxiosError<ApiErrorData>;
-    return axErr.response?.data?.message || axErr.message || fallback;
-  };
-
-  const getCart = async (): Promise<void> => {
+  const getCart = useCallback(async (): Promise<void> => {
     try {
       const res = await axios.get<CartApiResponse>(
         `/v2/api/${process.env.REACT_APP_API_PATH}/cart`
@@ -79,18 +69,13 @@ export default function FrontLayout(): JSX.Element {
 
       setCartData(cleanedData);
     } catch (error: unknown) {
-      await Toast.fire({
-        icon: "error",
-        title: "載入購物車失敗",
-        text: getErrMsg(error),
-      });
+      toast.error(getErrMsg(error));
     }
-  };
+  }, [toast]);
 
   useEffect(() => {
     void getCart();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [getCart]);
 
   return (
     <div className="d-flex flex-column min-vh-100">

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import axios, { AxiosError } from "axios";
 import CarouselPart from "../../components/CarouselPart";
 import { Carousel } from "bootstrap";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { Modal, Button } from "react-bootstrap";
 import { useForm, SubmitHandler } from "react-hook-form";
 

@@ -22,15 +22,8 @@ export default function Navbar({ cartData }: NavbarProps): JSX.Element{
   };
 
   const handleNavClick = (): void => {
-    if (window.innerWidth < 768 && collapseRef.current) { //collapseRef.current：確保 ref 真的有抓到 <div className="collapse navbar-collapse" id="navbarNav"> 這個 DOM 元素。
-      // useRef(null) 創建一個物件，裡面有一個 .current 屬性，初始值是 null。
-      //把這個 collapseRef 綁定（ref={collapseRef}）到某個 JSX 元素上後，React 會自動把該元素的 DOM 節點指派給 collapseRef.current。
-      const bsCollapse = Collapse.getOrCreateInstance(collapseRef.current);
-      //Collapse.getOrCreateInstance(element) 會：
-      //檢查這個 element（DOM 節點）上是否已經有一個 Bootstrap Collapse 的實例（instance）。
-      //如果有，就回傳已存在的實例。
-      //如果沒有，就建立一個新的 Collapse 實例並回傳。
-      bsCollapse.hide();//呼叫 Bootstrap 提供的 .hide() 方法
+    if (window.innerWidth < 768 && collapseRef.current) {
+      Collapse.getOrCreateInstance(collapseRef.current).hide();
     }
   };
 

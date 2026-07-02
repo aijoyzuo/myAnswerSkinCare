@@ -4,20 +4,16 @@ import { useEffect, useState } from "react";
 import Message from "../../components/Message";
 import { MessageProvider } from "../../context/messageContext";
 
+const getToken = (): string => {
+  const raw = document.cookie
+    .split("; ")
+    .find((row) => row.startsWith("answerToken="));
+  return raw ? raw.split("=")[1] : "";
+};
+
 export default function Dashboard(): JSX.Element {
   const navigate = useNavigate();
   const [authChecked, setAuthChecked] = useState(false);
-
-  const getToken = () => {
-    const raw = document.cookie
-      .split("; ")
-      .find((row) => row.startsWith("answerToken="));
-    return raw ? raw.split("=")[1] : "";
-  };
-
-  const token = getToken();
-  if (token) axios.defaults.headers.common["Authorization"] = token;
-  else delete axios.defaults.headers.common["Authorization"];
 
   const handleLogout = () => {
     document.cookie =
@@ -27,10 +23,15 @@ export default function Dashboard(): JSX.Element {
   };
 
   useEffect(() => {
+    const token = getToken();
+
     if (!token) {
+      delete axios.defaults.headers.common["Authorization"];
       navigate("/login");
       return;
     }
+
+    axios.defaults.headers.common["Authorization"] = token;
 
     (async () => {
       try {
@@ -42,7 +43,7 @@ export default function Dashboard(): JSX.Element {
         setAuthChecked(true);
       }
     })();
-  }, [navigate, token]);
+  }, [navigate]);
 
   return (
     <MessageProvider>

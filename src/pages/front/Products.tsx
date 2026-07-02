@@ -8,7 +8,7 @@ import {
 } from "react-router-dom";
 import Pagination, { type PaginationData } from "../../components/Pagination";
 import Loading from "../../components/Loading";
-import useWishList from "../../hook/useWishList";
+import { useWishList } from "../../context/wishListContext";
 import Breadcrumbs from "../../components/Breadcrumbs";
 import { useToast } from "../../context/toastContext";
 
@@ -53,10 +53,7 @@ export default function Products(): JSX.Element {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [categories, setCategories] = useState<string[]>([]);
 
-  const { wishList, toggleWish } = useWishList() as {
-    wishList: string[];
-    toggleWish: (id: string) => void;
-  };
+  const { wishList, toggleWish } = useWishList();
 
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();

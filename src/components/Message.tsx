@@ -1,13 +1,4 @@
-/* 這個元件的功能：建立畫面元件，使用這個跨元件的狀態（message）來顯示或觸發改變*/
-/*建立一個 Message 元件，並透過 useContext 這個 React Hook，從 MessageContext（一個跨元件共享的 Context 物件）中取得：
-message：目前的狀態資料（由 reducer 管理）
-dispatch：一個可以發送 action、改變 message 狀態的函式
-之後這個 message 的內容統一由 dispatch(action) 觸發對應的 reducer 邏輯來更新。*/
-
-
-
-import { useContext } from "react";
-import { useMessage } from "../context/messageContext";// ← TS 版的 hook
+import { useMessage } from "../context/messageContext";
 import type { MessageState } from '../context/messageContext';
 
 
