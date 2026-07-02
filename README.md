@@ -128,17 +128,6 @@ npm start
 
 代表假資料層已成功啟動。
 
-### 切換為真實 API（選用）
-
-若有六角學院的 API 帳號，可將 `.env` 改為以下設定：
-
-```env
-REACT_APP_API_URL=https://ec-course-api.hexschool.io
-REACT_APP_API_PATH=你的專屬路徑
-```
-
-修改後重新啟動即可切換至真實後端，MSW 設定 `onUnhandledRequest: 'bypass'` 會自動放行未被攔截的請求。
-
 ### 部署至 GitHub Pages
 
 ```bash
@@ -154,12 +143,13 @@ npm run deploy
 | 變數名稱 | 預設值（MSW 模式） | 說明 |
 |----------|-------------------|------|
 | `REACT_APP_API_URL` | 空字串 | API 伺服器位址，空字串表示使用相對路徑 |
-| `REACT_APP_API_PATH` | `mock-demo` | API Path，MSW handler 以萬用符號 `:apiPath` 匹配，任意值均可 |
+| `REACT_APP_API_PATH` | `mock-demo` | API Path，MSW handler 以萬用符號 `:apiPath` 匹配，任意值 |
 
 ---
 
 ## 開發筆記
 
+改用msw打API
 詳見 [dev-notes.md](./dev-notes.md)（Context → Redux 遷移、MSW 使用說明、Service Worker Scope 問題排查）。
 
 ---
