@@ -1,21 +1,21 @@
 {
   "files": {
     "main.css": "/myAnswerSkinCare/static/css/main.d4bbee5e.css",
-    "main.js": "/myAnswerSkinCare/static/js/main.931263a5.js",
-    "static/js/0.56a27743.chunk.js": "/myAnswerSkinCare/static/js/0.56a27743.chunk.js",
+    "main.js": "/myAnswerSkinCare/static/js/main.418b5ad6.js",
+    "static/js/0.0f6f2a66.chunk.js": "/myAnswerSkinCare/static/js/0.0f6f2a66.chunk.js",
     "static/js/453.dfad05b8.chunk.js": "/myAnswerSkinCare/static/js/453.dfad05b8.chunk.js",
     "static/js/803.cee73afe.chunk.js": "/myAnswerSkinCare/static/js/803.cee73afe.chunk.js",
     "static/media/bootstrap-icons.woff?": "/myAnswerSkinCare/static/media/bootstrap-icons.ee7f7b0d4f2ab19faa89.woff",
     "static/media/bootstrap-icons.woff2?": "/myAnswerSkinCare/static/media/bootstrap-icons.ca3f59d022374667bd54.woff2",
     "index.html": "/myAnswerSkinCare/index.html",
     "main.d4bbee5e.css.map": "/myAnswerSkinCare/static/css/main.d4bbee5e.css.map",
-    "main.931263a5.js.map": "/myAnswerSkinCare/static/js/main.931263a5.js.map",
-    "0.56a27743.chunk.js.map": "/myAnswerSkinCare/static/js/0.56a27743.chunk.js.map",
+    "main.418b5ad6.js.map": "/myAnswerSkinCare/static/js/main.418b5ad6.js.map",
+    "0.0f6f2a66.chunk.js.map": "/myAnswerSkinCare/static/js/0.0f6f2a66.chunk.js.map",
     "453.dfad05b8.chunk.js.map": "/myAnswerSkinCare/static/js/453.dfad05b8.chunk.js.map",
     "803.cee73afe.chunk.js.map": "/myAnswerSkinCare/static/js/803.cee73afe.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d4bbee5e.css",
-    "static/js/main.931263a5.js"
+    "static/js/main.418b5ad6.js"
   ]
 }
